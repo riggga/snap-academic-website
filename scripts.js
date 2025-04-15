@@ -357,17 +357,6 @@ function displayFavoriteGames(list) {
   });
 }
 
-
-let counter = 0;
-
-games.forEach(element => {
-  if (counter < 5 && element.rating >= 4.5) {
-    popular_games.push(element);
-    counter++;
-  }
-});
-
-
 function displayPopularGamesNav(list){
 
   const container = document.getElementById("popular-nav");
@@ -511,7 +500,7 @@ function displaySort() {
 
 }
 
-displaySort();
+
 
 
 
@@ -668,7 +657,7 @@ function addItem(){
         if(file){
           let reader = new FileReader();
           reader.readAsDataURL(file); 
-          reader.onload = (e)=>{
+          reader.addEventListener("load", (e)=>{
             const imageData = e.target.result; 
             const temp = {
               title,
@@ -684,7 +673,7 @@ function addItem(){
             displayGames(games);
             formVisibility = false;
             add_container.innerHTML = "";
-          };
+          });
         }
         else {
           alert("Please select an image.");
@@ -701,6 +690,14 @@ function addItem(){
 }
 
 
+let counter = 0;
+
+games.forEach(element => {
+  if (counter < 5 && element.rating >= 4.5) {
+    popular_games.push(element);
+    counter++;
+  }
+});
 
 
 favorite_page.addEventListener("click", ()=>{
@@ -717,6 +714,7 @@ home_page.addEventListener("click", ()=>{
 
 
 addItem();
+displaySort();
 searchGame()
 displayFilter();
 displayPopularGames(games[3]);
