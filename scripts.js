@@ -703,16 +703,19 @@ games.forEach(element => {
 
 let add_container = document.getElementById("add-container");
 
-favorite_page.addEventListener("click", ()=>{
+favorite_page.addEventListener("click", () => {
   search.style.display = "none";
   popular.style.display = "none";
+
   sort_container.style.display = "none";
   add_button.style.display = "none";
-  displayFavoriteGames(favorite_list);
-
-  formVisibility = false;
   add_container.innerHTML = "";
+  formVisibility = false;
+  sort_container.innerHTML = "";
+
+  displayFavoriteGames(favorite_list);
 });
+
 
 home_page.addEventListener("click", ()=>{
   popular.style.display = "flex";
