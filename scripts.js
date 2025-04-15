@@ -278,7 +278,9 @@ let favorite_list = [];
 let favorite_page = document.getElementById("Favorite");
 let popular = document.getElementById("popular");
 let search = document.getElementById("search-bar");
+let sort_container = document.getElementById("sort-container");
 let home_page = document.getElementById("Home");
+let add_button = document.getElementById("add");
 
 function displayGames(list){
   catalogContainer.innerHTML = "";
@@ -633,7 +635,7 @@ function addItem(){
       add_container.innerHTML = `
                             <div id="add-form">
                               <p>Title: <input id="input-title" type="text" placeholder="title"></p>
-                              <p>Genre: <input id="input-genre" "type="text" placeholder="genre"></p>
+                              <p>Genre: <input id="input-genre" type="text" placeholder="genre"></p>
                               <p>Platform: <input id="input-platform" type="text" placeholder="platform"></p>
                               <p>Rating: <input id="input-rating" type="text" placeholder="rating"></p>
                               <p>Price: <input id="input-price" type="text" placeholder="price"></p>
@@ -699,16 +701,25 @@ games.forEach(element => {
   }
 });
 
+let add_container = document.getElementById("add-container");
 
 favorite_page.addEventListener("click", ()=>{
   search.style.display = "none";
   popular.style.display = "none";
+  sort_container.style.display = "none";
+  add_button.style.display = "none";
   displayFavoriteGames(favorite_list);
+
+  formVisibility = false;
+  add_container.innerHTML = "";
 });
 
 home_page.addEventListener("click", ()=>{
   popular.style.display = "flex";
   search.style.display = "flex";
+  sort_container.style.display = "flex";
+  add_button.style.display = "flex";
+
   displayGames(games);
 });
 
