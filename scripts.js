@@ -731,4 +731,3 @@ displayFilter();
 displayPopularGames(games[3]);
 displayPopularGamesNav(popular_games);
 displayGames(games);
-
